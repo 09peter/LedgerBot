@@ -1,14 +1,8 @@
 ---
 --- 
-// now we can import the theme’s styles, then add our own below
 @import "minima";
 
-@import url("https://fonts.googleapis.com/css?family=Pirata+One|Bilbo+Swash+Caps&display=swap");
-
-@font-face {
-  font-family: Morris;
-  src: url(https://cdn.statically.io/gh/EmmesCodes/Tipografias/dae9f5bb/MorrisInitials.ttf);
-}
+@import url("https://fonts.googleapis.com/css?family=Pirata+One|Bitter&display=swap");
 
 #contain {
   position: relative; /* establish containing block */
@@ -16,10 +10,10 @@
   margin: 0em auto;
   padding: 3em;
   font-size: 1.1em;
-  color: #7f3300;
+  color: #612700;
   text-align: justify;
   line-height: 1.15;
-  background: none; /* no more #fffef0 or shadows here */
+  background: none;
 }
 
 #contain::before {
@@ -44,19 +38,11 @@
   filter: url(#wavy2);
 }
 
-/* drop‑cap styling
-#contain p:not(:first-child)::first-letter {
-  float: left;
-  font: 1.7em/1 Morris;
-  text-shadow: 1px 1px 1px black;
-  margin-right: 0.5rem;
-} */
-
 /* typography */
 .inkTitle {
   line-height: 1em;
   font-size: 2em;
-  font-family: "Pirata One", cursive;
+  font-family: "Pirata One";
   text-align: justify;
   color: DimGray;
   text-decoration: none;
@@ -72,12 +58,27 @@
   text-decoration: none;
 }
 
-#signature {
-  padding-top: 1em;
-  text-align: right;
-  color: black;
-}
-
 h2 {
   padding-top: 1em;
+}
+
+.pagination {
+  padding-top: 2em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.report-meta {
+  padding-top: 1em;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #000;
+}
+
+.site-header {
+  background-color: #612700;
+}
+
+body {
+  font-family: "Bitter";
 }
