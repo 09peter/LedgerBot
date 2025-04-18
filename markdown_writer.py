@@ -9,64 +9,38 @@ class MarkdownWriter:
         self.out_dir = out_dir
         os.makedirs(self.out_dir, exist_ok=True)
 
-    def _extract_tags(self, content: str):
-        # find [tag:xyz] patterns
-        tags = re.findall(r"\[tag:([^\]]+)\]", content)
-        return list({tag.strip() for tag in tags})
-
-    def _build_toc(self, content: str):
-        # scan for markdown headings: lines starting with ## or ### etc.
-        lines = content.splitlines()
-        toc = []
-        for line in lines:
-            m = re.match(r"^(#{2,6})\s+(.*)$", line)
-            if m:
-                level = len(m.group(1)) - 1  # TOC indent level
-                title = m.group(2).strip()
-                slug = slugify(title)
-                toc.append(f"{'  ' * (level-1)}- [{title}](#{slug})")
-        return "\n".join(toc)
-
     def build(self, message):
-        # Prepare front-matter
+        # 1) Prepare front-matter fields
         date = message.created_at.strftime("%Y-%m-%dT%H:%M:%S")
-        # Use first 5–8 words or fallback to timestamp
+        # Use first line (up to 8 words) as title fallback
         title_raw = message.content.strip().split("\n", 1)[0]
         title = " ".join(title_raw.split()[:8]) or f"Report {date}"
         slug = slugify(title)
-        tags = self._extract_tags(message.content)
+        author = message.author.display_name
 
+        # Build the YAML front-matter
         fm = {
             "title": title,
             "date": date,
+            "author": author,
         }
-        if tags:
-            fm["tags"] = tags
 
-        # Build body
+        # 2) Assemble the Markdown body
         body = message.content
-
-        # Assemble full markdown
-        md = [
+        md_lines = [
             "---",
             yaml.dump(fm, sort_keys=False).strip(),
             "---",
             "",
-            "<!-- TOC -->",
-            "",
-            self._build_toc(body),
-            "",
-            "<!-- /TOC -->",
-            "",
             body,
             ""
         ]
-        full = "\n".join(md)
+        full_md = "\n".join(md_lines)
 
-        # Filename: YYYY-MM-DD-slug.md
+        # 3) Write to file: YYYY-MM-DD-slug.md
         fname = f"{message.created_at.strftime('%Y-%m-%d')}-{slug}.md"
         path = os.path.join(self.out_dir, fname)
         with open(path, "w", encoding="utf-8") as f:
-            f.write(full)
+            f.write(full_md)
 
-        return path  # so you know where it landed
+        return path  # Return the path for logging/confirmation

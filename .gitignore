@@ -1,5 +1,4 @@
 __pycache__/
 .env
 *.pyc
-reports/
 state.json
