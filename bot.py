@@ -36,7 +36,7 @@ async def ping(ctx):
 
 # initialize once at module level
 state = StateStore("state.json")
-writer = MarkdownWriter("reports/")
+writer = MarkdownWriter("_reports/")
 
 @bot.event
 async def on_raw_reaction_add(payload):

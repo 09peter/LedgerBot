@@ -1,0 +1,33 @@
+---
+layout: default
+title: "Battle Reports"
+---
+
+<h1>{{ site.title }}</h1>
+
+<ul>
+  {% for report in paginator.collection.reports %}
+    <li>
+      <h2>
+        <a href="{{ report.url | relative_url }}">
+          {{ report.title }}
+        </a>
+      </h2>
+      <p>
+        <small>
+          {{ report.date | date: "%B %-d, %Y" }} by {{ report.author }}
+        </small>
+      </p>
+      <p>{{ report.excerpt }}</p>
+    </li>
+  {% endfor %}
+</ul>
+
+<nav class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Prev</a>
+  {% endif %}
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
+  {% endif %}
+</nav>
