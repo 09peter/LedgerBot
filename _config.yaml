@@ -1,4 +1,4 @@
-title: "TAL Crusade Ledger"
+title: "Crusade Ledger"
 description: "A living log of our Warhammer 40k battles"
 baseurl: "LedgerBot"        # or "/<repo>" if needed
 url: "https://09peter.github.io"
@@ -6,7 +6,7 @@ url: "https://09peter.github.io"
 theme: minima
 gems:
   - jekyll-paginate
-paginate: 5
+paginate: 2
 paginate_path: "/page:num/"
 
 # Prefix all posts under /reports/ rather than root

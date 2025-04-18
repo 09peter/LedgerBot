@@ -13,7 +13,7 @@ title: "Battle Reports"
       <p class="report-meta">
         {{ post.date | date: "%B %-d, %Y" }} by {{ post.author }}
       </p>
-      <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+      <p>{{ post.excerpt | strip_html }}</p>
     </li>
   {% endfor %}
 </ul>
