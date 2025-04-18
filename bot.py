@@ -6,11 +6,13 @@ from state_store import StateStore
 from markdown_writer import MarkdownWriter
 from github_committer import GitHubCommitter
 
-committer = GitHubCommitter()
+
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
 CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
+
+committer = GitHubCommitter()
 
 # ─── Intents ─────────────────────────────────────────────
 intents = discord.Intents.default()
@@ -58,16 +60,17 @@ async def on_raw_reaction_add(payload):
     md_path = writer.build(message)
     print(f"→ Wrote report to {md_path}")
 
-    # 6) Mark as processed and save state
+    # 6) Mark as processed, save state and commit
     state.add(message.id)
     state.save()
+    commit_msg = f"Add report: {os.path.basename(md_path)}"
+    committer.commit_file(md_path, repo_path, commit_msg)
 
     # 7) Acknowledge in Discord
     # after writer.build() and state.save()
     repo_path = md_path  # same relative path
-    commit_msg = f"Add report: {os.path.basename(md_path)}"
-    committer.commit_file(md_path, repo_path, commit_msg)
-    
+
+    await message.add_reaction("☑️")
     await channel.send(
         f"⚔️  Captured report from **{message.author.display_name}**!\n"
         f"Saved to `{md_path}`"
