@@ -59,18 +59,21 @@ async def on_raw_reaction_add(payload):
     # 5) Build Markdown file
     md_path = writer.build(message)
     print(f"→ Wrote report to {md_path}")
-
-    # 6) Mark as processed, save state and commit
     state.add(message.id)
     state.save()
-    commit_msg = f"Add report: {os.path.basename(md_path)}"
+
+    # 6) Commit to GitHub
+    #    repo_path must match the path inside your repo;
+    #    since your local md_path is "reports/2025-04-18-xxx.md",
+    #    we can reuse that directly.
+    repo_path = md_path.replace(os.sep, "/")
+    commit_msg = f"Add report: {os.path.basename(repo_path)}"
     committer.commit_file(md_path, repo_path, commit_msg)
 
-    # 7) Acknowledge in Discord
-    # after writer.build() and state.save()
-    repo_path = md_path  # same relative path
+    # 7) React back with a ✅ on the original message
+    await message.add_reaction("✅")
 
-    await message.add_reaction("☑️")
+    # 8) Acknowledge in the channel
     await channel.send(
         f"⚔️  Captured report from **{message.author.display_name}**!\n"
         f"Saved to `{md_path}`"
