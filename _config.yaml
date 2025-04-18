@@ -1,7 +1,7 @@
 # _config.yml
 title: "TAL Crusade Ledger"
 description: "A living log of our Warhammer 40k battles"
-baseurl: ""      # if you’re publishing at https://<user>.github.io/<repo>, set this to "/<repo>"
+baseurl: "https://09peter.github.io/LedgerBot"      # if you’re publishing at https://<user>.github.io/<repo>, set this to "/<repo>"
 url: "https://09peter.github.io"
 theme: minima    # GitHub’s default theme—simple & responsive
 paginate: 5      # posts per page
