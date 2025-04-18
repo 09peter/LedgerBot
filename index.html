@@ -4,24 +4,31 @@ title: "Battle Reports"
 ---
 
 <h1>{{ site.title }}</h1>
+<p>{{ site.description }}</p>
 
-<ul>
+<ul class="reports-list">
   {% for post in paginator.posts %}
     <li>
-      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-      <p>
-        <small>{{ post.date | date: "%B %-d, %Y" }} by {{ post.author }}</small>
-      </small></p>
-      <p>{{ post.excerpt }}</p>
+      <h2>
+        <a href="{{ post.url | relative_url }}">
+          {{ post.title }}
+        </a>
+      </h2>
+      <p class="report-meta">
+        {{ post.date | date: "%B %-d, %Y" }} by {{ post.author }}
+      </p>
+      <div class="report-excerpt">
+        {{ post.excerpt | strip_html | truncatewords: 30 }}
+      </div>
     </li>
   {% endfor %}
 </ul>
 
-<nav class="pagination">
+<nav class="pagination" role="navigation">
   {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Prev</a>
+    <a class="prev" href="{{ paginator.previous_page_path | relative_url }}">&laquo; Newer</a>
   {% endif %}
   {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | relative_url }}">Next &raquo;</a>
+    <a class="next" href="{{ paginator.next_page_path | relative_url }}">Older &raquo;</a>
   {% endif %}
 </nav>
