@@ -7,14 +7,16 @@ title: "Battle Reports"
 <p>{{ site.description }}</p>
 
 <ul class="reports-list">
-  {% for post in paginator.posts %}
-    <li>
+    {% for post in paginator.posts %}
+    <article class="report">
       <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
       <p class="report-meta">
         {{ post.date | date: "%B %-d, %Y" }} by {{ post.author }}
       </p>
-      <p>{{ post.excerpt | strip_html }}</p>
-    </li>
+      <div class="report-body">
+        {{ post.content }}
+      </div>
+    </article>
   {% endfor %}
 </ul>
 
