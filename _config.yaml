@@ -4,7 +4,7 @@ baseurl: "LedgerBot"        # or "/<repo>" if needed
 url: "https://09peter.github.io"
 
 theme: minima
-plugins:
+gems:
   - jekyll-paginate
 paginate: 5
 paginate_path: "/page:num/"
