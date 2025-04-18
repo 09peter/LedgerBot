@@ -12,13 +12,13 @@
 
 #contain {
   position: relative; /* establish containing block */
-  width: 75%;
-  margin: 2em auto;
-  padding: 1em 4em 2em 4em;
-  font-size: 1.25em;
+  width: 85%;
+  margin: 0em auto;
+  padding: 3em;
+  font-size: 1.1em;
   color: #7f3300;
   text-align: justify;
-  line-height: 1.25;
+  line-height: 1.15;
   background: none; /* no more #fffef0 or shadows here */
 }
 
@@ -57,7 +57,7 @@
   line-height: 1em;
   font-size: 2em;
   font-family: "Pirata One", cursive;
-  text-align: center;
+  text-align: justify;
   color: DimGray;
   text-decoration: none;
 }
@@ -76,4 +76,8 @@
   padding-top: 1em;
   text-align: right;
   color: black;
+}
+
+h2 {
+  padding-top: 1em;
 }
