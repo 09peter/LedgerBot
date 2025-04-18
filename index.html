@@ -6,19 +6,13 @@ title: "Battle Reports"
 <h1>{{ site.title }}</h1>
 
 <ul>
-  {% for report in paginator.collection.reports %}
+  {% for post in paginator.posts %}
     <li>
-      <h2>
-        <a href="{{ report.url | relative_url }}">
-          {{ report.title }}
-        </a>
-      </h2>
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
       <p>
-        <small>
-          {{ report.date | date: "%B %-d, %Y" }} by {{ report.author }}
-        </small>
-      </p>
-      <p>{{ report.excerpt }}</p>
+        <small>{{ post.date | date: "%B %-d, %Y" }} by {{ post.author }}</small>
+      </small></p>
+      <p>{{ post.excerpt }}</p>
     </li>
   {% endfor %}
 </ul>

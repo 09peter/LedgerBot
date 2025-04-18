@@ -1,13 +1,16 @@
-# _config.yml
 title: "TAL Crusade Ledger"
-description: "A living log of our Warhammer 40k battles"
-baseurl: "https://09peter.github.io/LedgerBot"      # if you’re publishing at https://<user>.github.io/<repo>, set this to "/<repo>"
+description: "A living log of our Warhammer 40k battles"
+baseurl: "LedgerBot"        # or "/<repo>" if needed
 url: "https://09peter.github.io"
-theme: minima    # GitHub’s default theme—simple & responsive
-paginate: 5      # posts per page
+
+theme: minima
+paginate: 5
 paginate_path: "/page:num/"
-# ➞ Define a custom collection called 'reports'
-collections:
-  reports:
-    output: true             # generate a page for each file
-    permalink: /:collection/:path/
+
+# Prefix all posts under /reports/ rather than root
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      permalink: /reports/:year-:month-:day-:title/
