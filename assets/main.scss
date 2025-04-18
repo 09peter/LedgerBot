@@ -15,10 +15,10 @@
   width: 75%;
   margin: 2em auto;
   padding: 1em 4em 2em 4em;
-  font-size: 2.25em;
+  font-size: 1.25em;
   color: #7f3300;
   text-align: justify;
-  line-height: 1.5;
+  line-height: 1.25;
   background: none; /* no more #fffef0 or shadows here */
 }
 
@@ -44,13 +44,13 @@
   filter: url(#wavy2);
 }
 
-/* drop‑cap styling */
+/* drop‑cap styling
 #contain p:not(:first-child)::first-letter {
   float: left;
   font: 1.7em/1 Morris;
   text-shadow: 1px 1px 1px black;
   margin-right: 0.5rem;
-}
+} */
 
 /* typography */
 .inkTitle {
@@ -59,6 +59,17 @@
   font-family: "Pirata One", cursive;
   text-align: center;
   color: DimGray;
+  text-decoration: none;
+}
+
+.inkTitle a {
+  color: dimgray;
+  text-decoration: none;
+}
+
+.inkTitle a:hover {
+  color: dimgray;
+  text-decoration: none;
 }
 
 #signature {
