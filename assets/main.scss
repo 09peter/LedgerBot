@@ -77,8 +77,25 @@ h2 {
 
 .site-header {
   background-color: #612700;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.site-title {
+  color: #fff !important;
+  letter-spacing: normal;
 }
 
 body {
   font-family: "Bitter";
+}
+
+.site-footer {
+  background-color: #612700;
+  color: #fff;
+  font-weight: 600;
+}
+
+.page-link {
+  color: #fff;
 }
