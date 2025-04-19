@@ -2,5 +2,18 @@
     <div class="wrapper">
       <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
     </div>
+    <button id="toTop" title="Back to top">↑</button>
+  <script>
+  // show button after scrolling down
+  window.addEventListener("scroll", () => {
+    document.getElementById("toTop").style.display =
+      window.scrollY > 300 ? "block" : "none";
+  });
+  // smooth‑scroll to top
+  document.getElementById("toTop").addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+
   </footer>
   

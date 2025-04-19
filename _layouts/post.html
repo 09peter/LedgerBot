@@ -16,10 +16,10 @@ layout: default
 
 <nav class="pagination" role="navigation">
   {% if page.previous %}
-    <a class="prev" href="{{ page.previous.url | relative_url }}">&laquo; Newer</a>
+    <a class="prev" href="{{ page.previous.url | relative_url }}">&laquo; Older</a>
   {% endif %}
   {% if page.next %}
-    <a class="next" href="{{ page.next.url | relative_url }}">Older &raquo;</a>
+    <a class="next" href="{{ page.next.url | relative_url }}">Newer &raquo;</a>
   {% endif %}
 </nav>
 
