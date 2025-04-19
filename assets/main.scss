@@ -4,6 +4,25 @@
 
 @import url("https://fonts.googleapis.com/css?family=Pirata+One|Bitter&display=swap");
 
+:root {
+  --bg: #fffef0;
+  --fg: #7f3300;
+}
+[data-theme="dark"] {
+  --bg: #2b2b2b;
+  --fg: #f0e68c;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* Parchment filter will still apply */
+#contain::before {
+  background-color: var(--bg);
+}
+
 #contain {
   position: relative; /* establish containing block */
   width: 85%;
@@ -96,6 +115,6 @@ body {
   font-weight: 600;
 }
 
-.page-link a {
+.site-nav .page-link a {
   color: #fff;
 }
